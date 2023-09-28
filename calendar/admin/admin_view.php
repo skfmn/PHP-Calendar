@@ -12,7 +12,7 @@ $strPurgeText;
 $cookies = $_SESSION["caladminname"];
 if ($cookies == "") {
 
-    redirect($redirect . "admin/amin_login.php");
+    redirect($redirect . "admin/admin_login.php");
     ob_end_flush();
 
 }

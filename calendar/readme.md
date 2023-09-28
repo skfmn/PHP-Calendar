@@ -1,6 +1,6 @@
-PHP Calendar V1.2                                 
-copyright 2023 Steve Frazier                      
-www.phpjunction.com                               
+*PHP Calendar V1.2                                 
+*copyright 2023 Steve Frazier                      
+*www.phpjunction.com                               
                                                    
 You may modify and distribute this script free of  
 charge as long as this readme.txt with the        
@@ -16,19 +16,19 @@ Make sure you have 'write' permissions on the folder before you begin installati
 
 Navigate to:
 
-/calendar/install/install.php
+`/calendar/install/install.php`
 
 Then follow the instructions
 
 You will be able to login at:
 
-/calendar/admin/admin_login.php
+`/calendar/admin/admin_login.php`
 
 Login using "admin" as your login name AND password.
 Once you have logged in you can and should change your login info.
 
 IMPORTANT NOTES:
-1. There is a setting to allow visitors to schedule events and should only be used in a trusted and/or secure environment.
+1 There is a setting to allow visitors to schedule events and should only be used in a trusted and/or secure environment.
    If someone is upset and this feature is enabled that person could start deleting your events!
 
-2. For a smoother install; Appease the APP gods before installation and sacrifice one iPhone!
+2 For a smoother install; Appease the APP gods before installation and sacrifice one iPhone!

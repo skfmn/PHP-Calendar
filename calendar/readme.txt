@@ -1,5 +1,8 @@
 ***************************************
-* PHP Calendar                                      
+* PHP Calendar v1.2
+* Copyright 2007 - 2023
+* By steve Fraizer
+*
 * phpjunction.com                                   
 *                                  
 *                                                   
@@ -10,7 +13,7 @@
 * YOU MAY NOT SELL THIS SCRIPT                      
 **************************************
 
-*************Installation Instructions***************
+**Installation Instructions**
 
 Create a MySQL Database for the Calendar, if your not sure how contact your hosting provider
 

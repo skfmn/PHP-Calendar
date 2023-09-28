@@ -28,10 +28,10 @@
 	  if (!$conn) { die("Connection failed: " . mysqli_connect_error()); }
 
 		$m = $d = $y = "";
-    $m = test_input($_POST["mcount"]);
+        $m = test_input($_POST["mcount"]);
 		$d = test_input($_POST["dcount"]);
 		$y = test_input($_POST["ycount"]);
-	  $schedDate = date($y."/".$m."/".$d);
+	    $schedDate = date($y."/".$m."/".$d);
 
 		if (date_create_from_format("Y/n/j",$schedDate) == false) {
 
@@ -74,6 +74,7 @@
 ?>
 <div id="main" class="container">
   <header><h2 style="text-align:center;">Schedule an Event</h2></header>
+  <script type="text/javascript" src="../assets/js/articles.js"></script>
   <form action="admin_schedule.php" method="post" name="schedule" onsubmit="return validateSched();">
 	<input type="hidden" name="schedule" value="now">
   <div class="row">

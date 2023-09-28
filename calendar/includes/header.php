@@ -25,7 +25,7 @@
 		<ul class="links">
 			<li><a href="#top">Top</a></li>
       <li><a href="admin.php">Admin Home</a></li>
-      <li><a href="admin_schedule.php"><span>Schedule an Event</span></a></li>
+      <li><a href="admin_schedule.php"><span>Schedule Event</span></a></li>
       <li><a href="admin_view.php"><span>Manage Events</span></a></li>
       <li><a href="admin_settings.php"><span>Manage Settings</span></a></li>
       <li><a href="admin_manage.php"><span>Manage Admins</span></a></li>

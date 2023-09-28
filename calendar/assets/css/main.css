@@ -2895,16 +2895,14 @@ div.input-wrapper {
 	position: relative;
 	display: inline-block;
 	width: 100%;
-	/*height: 2.75em;*/
 }
 
 i.shpwd {
 	float: right;
 	position: absolute;
 	display: inline-block;
-	top: 0px;
-	right: 0px;
-	margin-right: 10px;
-	margin-top: 12px;
+	font-size: 30px;
+	top: 10px;
+	right: 10px;
 	z-index: 2;
 }

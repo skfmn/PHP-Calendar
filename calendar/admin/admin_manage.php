@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+
 include '../includes/globals.php';
 include '../includes/functions.php';
 

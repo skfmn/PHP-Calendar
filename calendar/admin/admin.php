@@ -32,7 +32,11 @@
   include "../includes/header.php";
 ?>
 <div id="main" class="container">
-  <header><h2>PHP Calendar</h2></header>
+    <header>
+        <h1 style="text-align: center;font-size:30px">PHP Calendar</h1>
+        <h4 style="text-align: center;">Choose an Option below</h4>
+    </header>
+
   <div class="row">
 		<div class="-3u 3u 12u$(medium)">
 			<ul class="alt">

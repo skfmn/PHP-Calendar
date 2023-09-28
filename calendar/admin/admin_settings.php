@@ -82,12 +82,19 @@ if (isset($_POST["chmstgs"])) {
   if (isset($_POST["sitename"])) {
     $siteTitle = test_input($_POST["sitename"]);
   }
+
   if (isset($_POST["domainname"])) {
     $domainname = test_input($_POST["domainname"]);
   }
 
-  $stmt = mysqli_prepare($conn, "UPDATE " . DBPREFIX . "settings SET site_title = ?, domain_name = ?");
-  $stmt->bind_param('ss', $siteTitle, $domainname);
+if (isset($_POST["showlegend"])) {
+    $showlegend = "true";
+} else {
+    $showlegend = "false";
+}
+
+  $stmt = mysqli_prepare($conn, "UPDATE " . DBPREFIX . "settings SET site_title = ?, domain_name = ?, show_legend = ?");
+  $stmt->bind_param('sss', $siteTitle, $domainname,$showlegend);
 
   if ($stmt->execute()) {
     $_SESSION["msg"] = "opa";
@@ -159,18 +166,29 @@ include "../includes/header.php";
       <form action="admin_settings.php" method="post">
         <input type="hidden" name="chmstgs" value="y" />
         <div class="row">
-          <div class="4u 12u$(medium)">
+          <div class="4u 12u$(small)">
             <label for="sitename">Site Name</label>
             <input type="text" id="sitename" name="sitename" value="<?php echo SITETITLE; ?>" />
           </div>
-          <div class="4u 12u$(medium)">
+          <div class="4u 12u$(small)">
             <label for="domainname">Domain Name</label>
             <input type="text" id="domainname" name="domainname" value="<?php echo DOMAIN; ?>" />
           </div>
-          <div class="4u$ 12u$(medium)">
-            <label for="submit">&nbsp;</label>
-            <input class="button fit" type="submit" name="submit" value="Save Settings" style="vertical-align:bottom;" />
-          </div>
+            <div class="4u$ 12u$(small)" style="margin-top:25px;">
+                <br />
+<?php
+                $strChecked = "";
+                if (SHOWLEGEND == "true") {
+                    $strChecked = "checked";
+                }
+?>
+                <input type="checkbox" id="showlegend" name="showlegend" value="showlegend" <?php echo $strChecked; ?> />
+                <label for="showlegend">Show Legend</label>
+            </div>
+            <div class="12u$" style="margin-top:10px;">
+                <input class="button fit" type="submit" name="submit" value="Save Settings" />
+            </div>
+
         </div>
       </form>
 
@@ -197,10 +215,8 @@ include "../includes/header.php";
         <input type="text" id="ndays" name="ndays" value="<?php echo DELDAYS; ?>" style="width:75px;" />
         <label for="ndays">Days: 0 = All past events.</label>
         <label for="announce">Announcements</label>
-        <textarea id="announce" name="announce" rows="5">
-          <?php echo ANNOUNCEMENTS; ?>
-        </textarea>
-        <input class="button fit" type="submit" value="Edit Settings" />
+        <textarea id="announce" name="announce" rows="5"><?php echo trim(ANNOUNCEMENTS); ?></textarea>
+        <input class="button fit" type="submit" value="Edit Options" style="margin-top:20px;" />
       </form>
 
     </div>

@@ -124,7 +124,7 @@ $sitetitle = $domain = "";
       <div id="main" class="container" align="center">
         <div class="row 50%">
           <div class="12u 12u$(medium)">
-            <?php
+              <?php
 
             $servername = test_input($_POST["servername"]);
             $dbname = test_input($_POST["dbname"]);
@@ -143,8 +143,14 @@ $sitetitle = $domain = "";
 
             $sql = "CREATE TABLE IF NOT EXISTS " . $dbprefix . "admin (
             adminID int(11) NOT NULL AUTO_INCREMENT ,
-	          name VARCHAR(255) NOT NULL ,
-	          pwd VARCHAR(255) NOT NULL ,
+	        name VARCHAR(255) NOT NULL ,
+	        pwd VARCHAR(255) NOT NULL ,
+            schedule VARCHAR(5) NOT NULL ,
+            events VARCHAR(5) NOT NULL ,
+            settings VARCHAR(5) NOT NULL ,
+            admin_rights VARCHAR(5) NOT NULL ,
+            arights VARCHAR(5) NOT NULL ,
+            purge_events VARCHAR(5) NOT NULL ,
             PRIMARY KEY (adminID)
             ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
 
@@ -158,9 +164,9 @@ $sitetitle = $domain = "";
 
             $password = password_hash("admin", PASSWORD_DEFAULT);
             $param1 = "admin";
-
-            $stmt = $conn->prepare("INSERT INTO " . $dbprefix . "admin (name,pwd) VALUES (?,?)");
-            $stmt->bind_param('ss', $param1, $password);
+            $param2 = "true";
+            $stmt = $conn->prepare("INSERT INTO " . $dbprefix . "admin (name,pwd,schedule,events,settings,admin_rights,arights,purge_events) VALUES (?,?,?,?,?,?,?,?)");
+            $stmt->bind_param('ssssssss', $param1, $password, $param2, $param2, $param2, $param2, $param2, $param2);
 
             if ($stmt->execute()) {
               echo "Admin table populated successfully<br /><br />";
@@ -172,10 +178,11 @@ $sitetitle = $domain = "";
 
             $sql = "CREATE TABLE IF NOT EXISTS " . $dbprefix . "settings (
             settingID int(11) NOT NULL AUTO_INCREMENT ,
-	          site_title VARCHAR(255) DEFAULT NULL ,
-	          domain_name VARCHAR(255) DEFAULT NULL ,
+	        site_title VARCHAR(255) DEFAULT NULL ,
+	        domain_name VARCHAR(255) DEFAULT NULL ,
             letusers CHAR(1) ,
             delete_days int(10) ,
+            show_legend VARCHAR(5) NOT NULL ,
             announcements text ,
             PRIMARY KEY (settingID)
             ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
@@ -188,16 +195,16 @@ $sitetitle = $domain = "";
 
             echo "Populating settings table...<br /><br />";
 
-            $conn->query("INSERT INTO " . $dbprefix . "settings (letusers,delete_days,announcements) VALUES (0,30,'Announcements go here!')");
+            $conn->query("INSERT INTO " . $dbprefix . "settings (letusers,delete_days,show_legend,announcements) VALUES (0,30,'true','Announcements go here!')");
 
             echo "Creating Messages table...<br />";
 
             $sql = "CREATE TABLE IF NOT EXISTS " . $dbprefix . "messages (
-	          messageID int(11) NOT NULL AUTO_INCREMENT ,
-	          msg VARCHAR(50) ,
+	        messageID int(11) NOT NULL AUTO_INCREMENT ,
+	        msg VARCHAR(50) ,
             message VARCHAR(250) ,
-					  PRIMARY KEY (messageID)
-					  ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
+			PRIMARY KEY (messageID)
+			) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
 
             if ($conn->query($sql)) {
               echo "Messages created successfully<br /><br />";
@@ -208,7 +215,7 @@ $sitetitle = $domain = "";
             echo "Populating Messages table...<br /><br />";
 
             $sql = "INSERT INTO " . $dbprefix . "messages (msg,message) VALUES
-		       ('logch', 'Your login information was successfully changed.'),
+		   ('logch', 'Your login information was successfully changed.'),
            ('evsch', 'Event was successfully scheduled.'),
            ('evmod', 'The event information was successfully changed.'),
            ('setch', 'The settings was successfully updated.'),
@@ -245,15 +252,15 @@ $sitetitle = $domain = "";
             echo "Creating Registration table...<br /><br />";
 
             $sql = "CREATE TABLE IF NOT EXISTS " . $dbprefix . "registration (
-	         regID int(11) NOT NULL AUTO_INCREMENT ,
-	         schedID int(10) ,
-				   reg_name VARCHAR(50) ,
-	         add_info text ,
-				   PRIMARY KEY (regID)
-					 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
+	        regID int(11) NOT NULL AUTO_INCREMENT ,
+	        schedID int(10) ,
+		    reg_name VARCHAR(50) ,
+	        add_info text ,
+			PRIMARY KEY (regID)
+				) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
 
             if ($conn->query($sql)) {
-              echo "Registration table populated successfully<br /><br />";
+              echo "Registration table created successfully<br /><br />";
             } else {
               echo "Error: " . $sql . "<br>" . $conn->error;
             }
@@ -261,13 +268,13 @@ $sitetitle = $domain = "";
             echo "Creating Calendar table...<br />";
 
             $sql = "CREATE TABLE IF NOT EXISTS " . $dbprefix . "calendar (
-	          schedID int(11) NOT NULL AUTO_INCREMENT ,
-	          allow_reg CHAR(1) ,
+	        schedID int(11) NOT NULL AUTO_INCREMENT ,
+	        allow_reg CHAR(1) ,
             schDate VARCHAR(25) ,
             event VARCHAR(255) ,
-	          comments text ,
-					  PRIMARY KEY (schedID)
-					  ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
+	        comments text ,
+			PRIMARY KEY (schedID)
+			) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1";
 
             if ($conn->query($sql)) {
               echo "Calendar table created successfully<br /><br />";
@@ -276,7 +283,7 @@ $sitetitle = $domain = "";
             }
 
             echo "Creating database tables...Complete!<br />";
-            ?>
+              ?>
             <br />
             <br />
           </div>

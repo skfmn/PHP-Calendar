@@ -27,8 +27,7 @@ You will be able to login at:
 Login using "admin" as your login name AND password.
 Once you have logged in you can and should change your login info.
 
-IMPORTANT NOTES:
-1 There is a setting to allow visitors to schedule events and should only be used in a trusted and/or secure environment.
-   If someone is upset and this feature is enabled that person could start deleting your events!
-
-2 For a smoother install; Appease the APP gods before installation and sacrifice one iPhone!
+> [!IMPORTANT]
+> 1 There is a setting to allow visitors to schedule events and should only be used in a trusted and/or secure environment.
+> If someone is upset and this feature is enabled that person could start deleting your events!
+> 2 For a smoother install; Appease the APP gods before installation and sacrifice one iPhone!

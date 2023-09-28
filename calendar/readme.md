@@ -1,6 +1,6 @@
-*PHP Calendar V1.2                                 
-*copyright 2023 Steve Frazier                      
-*www.phpjunction.com                               
+* PHP Calendar V1.2                                 
+* copyright 2023 Steve Frazier                      
+* www.phpjunction.com                               
                                                    
 You may modify and distribute this script free of  
 charge as long as this readme.txt with the        
